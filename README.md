@@ -6,4 +6,4 @@ Técnico en Desarrollo de Software
 |1.Wireframes  | LOFI |
 |2.Wireframes  | HIFI|
 
-![luna](http://tinyurl.com/5n8x3vk6)
+![luna](http://tinyurl.com/44fb9b9s)
