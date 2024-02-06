@@ -5,30 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Page</title>
     <style>
-        body{
-            background-color: teal;
-            color: #fff9;
-            font-family: sans-serif;
-            
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&family=Prata&display=swap');
+        body {
+            background-color: #330000;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 400'%3E%3Cdefs%3E%3CradialGradient id='a' cx='396' cy='281' r='514' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23D18'/%3E%3Cstop offset='1' stop-color='%23330000'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='400' y1='148' x2='400' y2='333'%3E%3Cstop offset='0' stop-color='%23FA3' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23FA3' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='400'/%3E%3Cg fill-opacity='0.4'%3E%3Ccircle fill='url(%23b)' cx='267.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='532.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='400' cy='30' r='300'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+            color: #fffF;
+            font-family: prata, serif;
         }
-        main{
+
+        h1{
+            font-size: 4rem;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        h2{
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin: 0;
+        }
+        main {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
-         a:is(:link, :visited) {
-            color: #fff;
+        menu{
+            padding: 0;
+        }
+        menu ul{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            margin-top: 2rem;
+            padding: 0;
+            gap: 1rem;
+        }
+        menu ul li{
+            border-radius: 4rem;
+            background-color: #ffffff;
+            border: 2px solid #ffaa33;
+            padding: 0.5rem;
+            width: 280px;
+            transition: all 0.5s;
+
+        }
+        menu ul li a span{
+            background-color: #ffaa33;
+            border-radius: 2rem;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            width: 24px;
+        }
+        menu ul li a:is(:link, :visited){
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: #dd1188;
+        }
+         menu ul li:is(:hover){
+            background-color: #ffaa33;
+            border: 2px solid #fff;
          }
+menu ul li:is(:hover) a{
+    color: #ffffff;
+     
+}
+menu ul li:is(:hover) a span{
+background-color: #fff;
+color: #d18;
+}
+        
+        a:is(:link, :visited) {
+            color: #fff;
+        }
     </style>
 </head>
+
 <body>
-    <iframe></iframe>
+
     <main>
         <h1>ID:2770672</h1>
-       <h2>Técnico en Desarrollo de Software</h2> 
-<hr><a href="01-Wireframe/index.html">01 - Wireframe HIFI & Prototype</a>
+        <h2>Técnico en Desarrollo de Software</h2>
+<menu>
+    <ul>
+    <li><a href="01-UI/01-WIREFRAME.html" target="_blank"><span>01</span> - Wireframe HIFI </a></li>
+    <li><a href="02-UI/02-PROTOTYPE.HTML" target="_blank"><span>02</span> - Prototype </a></li>
+    <li><a href="#"><span>03</span> - Style Guide </a></li>
+    <li><a href="#"><span>04</span> - Mockup (Desing)</a></li>
+</menu>
+        
     </main>
 </body>
+
 </html>
