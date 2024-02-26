@@ -37,9 +37,9 @@
 
 <body>
     <main>
-        <header class="nav level-0">
-            <a href="../dashboard.html">
-                <img src="<?php echo URLIMGS . "/iconback.svg"?>" alt="back">
+        <header class="nav level-1">
+            <a href="index.php">
+            <img src="<?php echo URLIMGS . "/iconback.svg"?>" alt="back">
             </a>
             <img src="<?php echo URLIMGS . "/logo.svg"?>" width="200px" alt="Logo">
            
@@ -49,7 +49,7 @@
         </header>
         <section class="module">
             <h1>MODULE PETS</h1>
-            <a class="add" href="add.html">
+            <a class="add" href="addpet.php">
                 <img src="<?php echo URLIMGS . "/circle-plus-solid (1).svg"?>"alt="Add" width="30px">
                 Add Pet
             </a>
@@ -57,17 +57,19 @@
                 <tbody>
                 <?php foreach($pets as $pet): ?>
                     <tr>
-                        <td><img src="<?php echo URLIMGS . "/huella.svg"?>" alt="Pet"></td>
+                        <td><img src="<?php echo URLIMGS . "/" . $pet['photo']?>" alt="Pet"></td>
                         <td>
                             <span><?php echo $pet['name'] ?></span>
                             <span><?php echo $pet['kind'] ?></span>
                         </td>
                         <td>
-                            <a href="show.html" class="show">
+                            <a href="showpet.php?id=<?=$pet['id']?>" class="show">
                                 <img src="<?php echo URLIMGS . "/search.svg"?>" alt="">
+                            <a href="editpet.php?id=<?=$pet['id']?>" class="show">
+                                <img src="<?php echo URLIMGS . "/edit.svg"?>" alt="">   
                             </a>
-                            <a href="javascript:;" class="delete">
-                                <img src="<?php echo URLIMGS ."/delete.svg"?>" alt="">
+                            <a href="javascript:;" class="delete" data-id="<?=$pet['id']?>">
+                                <img src="<?php echo URLIMGS ."/delete.svg"?>" alt="delete">
                             </a>
                         </td>
                     </tr>
@@ -78,11 +80,25 @@
 
 
         </section>
-        <script src="../../js/sweetalert2.js"></script>
-        <script src="../../js/jquery-3.7.1.min.js"></script>
+        <script src="<?php echo URLJS . "/codigofuente.js"?>"></script>
+        <script src="<?php echo URLJS . "/jquery.js"?>"></script>
         <script>
             $(document).ready(function () {
+                <?php if(isset($_SESSION['msg'])):?>
+                        swal.fire({
+                            title:"Congratulations",
+                            text:"<?php echo $_SESSION['msg'] ?>",
+                            icon: "success",
+                            timer:5000,
+                            possition:"top-end",
+                            ShowConfirmButton: false
+                        })
+                        <?php unset ($_SESSION['msg'])?>
+                        <?php endif?>
                 $('body').on('click', '.delete', function () {
+                    
+                    $id = $(this).attr('data-id')
+                 
                     Swal.fire({
                     title: "Are you sure?",
                     text: "You won't be able to revert this!",
@@ -93,16 +109,16 @@
                     confirmButtonText: "Yes, delete it!"
                     }).then((result) => {
                     if (result.isConfirmed) {
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "The user was deleted.",
-                        icon: "success",
-                        confirmButtonColor: "#861928",
-                    })
-                }                  
+                   window.location.replace('delete.php?id=' + $id)
+                }
+                
             })
-        })
+               
+        })                  
+           
     })
+      
+
         </script>
    </main>
 </body>
