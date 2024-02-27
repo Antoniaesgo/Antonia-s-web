@@ -107,3 +107,5 @@ function updatePet($conx, $data){
                 echo "Error: " . $e->getMessage();
             }
         }
+
+        
