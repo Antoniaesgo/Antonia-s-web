@@ -4,6 +4,8 @@
     require_once "config/app.php";
     require_once "config/database.php";
 
+    $user = getUser($conx, $_SESSION['uid']);
+
     if(!isset($_SESSION['uid'])) {
         $_SESSION['error'] = "Please login first to acces dashboard.";
         header("location: index.php");
@@ -14,10 +16,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,11 +39,35 @@
 
             a:is(:link, :visited){
                 color:var(--color-sec);
-                border: 1px solid #fff;
+                border: 1px solid #4F000B;
                 border-radius:50px;
                 font-size: 2rem;
                 text-decoration:none;
                 padding:10px 20px;
+            }
+        }
+        a.closem{
+            position: absolute;
+            top:44px;
+            right: 500px;
+        }
+
+        nav{
+            color:#4F000B;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:1rem;
+
+            img{
+                border:2px solid var(--color-pri);
+                border-radius:60%;
+                object-fit:cover;
+                width:250px
+            }
+            h4,h5{
+                margin:0;
+                font-size:1.4rem;
             }
         }
             div.menu.open{
@@ -76,7 +98,9 @@
                     opacity:0;
 
                  } 
-            }               
+            }    
+            
+            
 
         
     </style>
@@ -92,6 +116,10 @@
     <div class="menu">
         <a href="javascript: ;" class="closem">x</a>
         <nav>
+        <img src="<?=URLIMGS . "/" .$user['photo']?>" alt="Photo">
+        <h4><?=$user['fullname']?></h4>
+        <h5><?=$user['role']?></h5>
+
             <a href="close.php">Close session</a>
         </nav>
     </div>
@@ -107,6 +135,7 @@
                 <img src="<?php echo URLIMGS . "/BURGER.svg"?>" alt="">
             </a>
         </header>
+        <?php if($_SESSION['urole'] == 'Admin'):?>
         <section class="dashboard">
             <h1>Dashboard</h1>
             <menu>
@@ -132,11 +161,26 @@
                 </ul>
             </menu>
         </section>
-
+        
+        <?php elseif ($_SESSION['urole'] == 'Customer'):?>
+            <section class="dashboard">
+            <h1>Dashboard</h1>
+            <menu>
+                <ul>
+                <li>
+                        <a href="#">
+                        <img src="<?php echo URLIMGS . "/iconadopstions.svg"?>" alt="">
+                            Module Adoptions
+                        </a>
+                    </li>
+                </ul>
+            </menu>
+        </section>
+            <?php endif?>
 
     </main>
     
-        </section>
+        
         <script src="<?php echo URLJS . "/codigofuente.js"?>"></script>
         <script src="<?php echo URLJS . "/jquery.js"?>"></script>
         <script>

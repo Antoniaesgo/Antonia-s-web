@@ -70,7 +70,20 @@ if  (isset($_SESSION['uid'])){
                             possition:"top-end",
                             ShowConfirmButton: false
                         })
+
                         <?php unset ($_SESSION['error'])?>
+                        <?php endif?>
+                     
+                <?php if(isset($_SESSION['msg'])):?>
+                        swal.fire({
+                            title:"Congratulations!",
+                            text:"<?php echo $_SESSION['msg'] ?>",
+                            icon: "msg",
+                            timer:5000,
+                            possition:"top-end",
+                            ShowConfirmButton: false
+                        })
+                        <?php unset ($_SESSION['msg'])?>
                         <?php endif?>
              
            
